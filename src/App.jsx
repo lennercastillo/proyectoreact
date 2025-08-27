@@ -8,6 +8,7 @@ import PricingCards from './components/PricingCards';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
 import HelpPage from './pages/HelpPage';
+import VisitCounter from './components/VisitCounter';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <>
               <Hero />
               <Features />
+              <VisitCounter />
               <PricingCards />
               <CTA />
             </>
