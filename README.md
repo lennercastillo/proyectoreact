@@ -92,8 +92,12 @@ Para hacer deploy en Railway:
 
 1. **Conectar tu repositorio** a Railway
 2. **Framework**: Seleccionar "Node.js"
-3. **Build Command**: `npm run build` (ya configurado)
-4. **Start Command**: `npm run preview` (ya configurado)
-5. **Variables de Entorno**: No necesarias para el frontend
+3. **Railway detectará automáticamente** la configuración de Nixpacks
+4. **Build Command**: `npm run build` (automático)
+5. **Start Command**: `npm run preview` (automático)
+
+**Configuración Automática**: Railway usará `nixpacks.toml` para configurar el build automáticamente.
+
+**Solución de Errores**: Si hay problemas con Nixpacks, Railway puede usar la configuración mínima de `railway-minimal.toml`.
 
 **Nota**: El contador de vistas en tiempo real solo funcionará si tienes el servidor corriendo en un hosting que soporte WebSockets (como Heroku, Railway, o un VPS).
