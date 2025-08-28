@@ -5,11 +5,6 @@ import './Hero.css';
 function Hero() {
   return (
     <section className="hero">
-      <div className="hero-background">
-        <div className="hero-pattern"></div>
-        <div className="hero-gradient"></div>
-      </div>
-      
       <div className="hero-container">
         <div className="hero-content">
           <div className="hero-badge">

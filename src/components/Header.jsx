@@ -27,7 +27,6 @@ function Header() {
         <div className="logo-container">
           <Link to="/" className="logo-link">
             <img src="/assets/logo/logoPV_btnInicio.png" alt="Logo Sistema Inventario" className="logo" />
-            <span className="logo-text">SistemaPV</span>
           </Link>
         </div>
         
