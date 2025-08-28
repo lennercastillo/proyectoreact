@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Hero from './components/Hero';
 import Features from './components/Features';
 import Stats from './components/Stats';
+import LiveViewCounter from './components/LiveViewCounter';
 import PricingCards from './components/PricingCards';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
@@ -24,6 +25,7 @@ function App() {
               <Hero />
               <Features />
               <Stats />
+              <LiveViewCounter />
               <PricingCards />
               <CTA />
             </>
