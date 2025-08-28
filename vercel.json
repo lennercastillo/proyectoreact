@@ -2,7 +2,7 @@
   "framework": "vite",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "installCommand": "npm install",
+  "installCommand": "npm ci --production=false --ignore-optional",
   "rewrites": [
     {
       "source": "/(.*)",
@@ -19,5 +19,9 @@
         }
       ]
     }
-  ]
+  ],
+  "functions": {},
+  "env": {
+    "NODE_ENV": "production"
+  }
 }
