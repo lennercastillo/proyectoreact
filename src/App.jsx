@@ -4,23 +4,26 @@ import './App.css';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Features from './components/Features';
+import Stats from './components/Stats';
 import PricingCards from './components/PricingCards';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
 import HelpPage from './pages/HelpPage';
-import VisitCounter from './components/VisitCounter';
+import EyeCorner from './components/EyeCorner';
+
 
 function App() {
   return (
     <Router>
       <div className="App">
+        <EyeCorner />
         <Header />
         <Routes>
           <Route path="/" element={
             <>
               <Hero />
               <Features />
-              <VisitCounter />
+              <Stats />
               <PricingCards />
               <CTA />
             </>

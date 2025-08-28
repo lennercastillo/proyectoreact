@@ -1,7 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import { FaBars, FaTimes } from 'react-icons/fa';
-import LiveVisitsBanner from './LiveVisitsBanner';
 
 function Header() {
   const location = useLocation();
@@ -13,13 +12,11 @@ function Header() {
   
   return (
     <>
-      <LiveVisitsBanner />
       <header className="header">
         <div className="header-container">
           <div className="logo-container">
             <Link to="/" className="logo-link">
               <img src="/assets/logo/logoPV_btnInicio.png" alt="Logo Sistema Inventario" className="logo" />
-              <span className="logo-text">Sistema Inventario</span>
             </Link>
           </div>
           
