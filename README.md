@@ -86,22 +86,4 @@ Para hacer deploy en Vercel:
 4. **Output Directory**: `dist`
 5. **Install Command**: `npm install`
 
-## Deploy en Railway
-
-Para hacer deploy en Railway:
-
-1. **Conectar tu repositorio** a Railway
-2. **Framework**: Seleccionar "Node.js"
-3. **Railway detectará automáticamente** la configuración
-
-**Opciones de Configuración:**
-
-- **Nixpacks (Recomendado)**: Usar `nixpacks.toml` o `nixpacks-simple.toml`
-- **Docker (Alternativo)**: Usar `railway-docker.toml` con `Dockerfile`
-- **Configuración Mínima**: Usar `railway-ultra-minimal.toml`
-
-**Solución de Errores**: Si Nixpacks falla, Railway puede usar Docker como alternativa.
-
-**Puerto**: La aplicación se ejecutará en el puerto 3000.
-
 **Nota**: El contador de vistas en tiempo real solo funcionará si tienes el servidor corriendo en un hosting que soporte WebSockets (como Heroku, Railway, o un VPS).
