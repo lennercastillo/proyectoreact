@@ -75,3 +75,25 @@ La aplicación se ejecutará en `http://localhost:5173`
 - El servidor debe estar ejecutándose para que el contador funcione
 - El contador funciona por conexión activa, no por página vista
 - Se recomienda usar `npm run dev` para desarrollo con recarga automática
+
+## Deploy en Vercel
+
+Para hacer deploy en Vercel:
+
+1. **Conectar tu repositorio** a Vercel
+2. **Framework Preset**: Seleccionar "Vite"
+3. **Build Command**: `npm run build`
+4. **Output Directory**: `dist`
+5. **Install Command**: `npm install`
+
+## Deploy en Railway
+
+Para hacer deploy en Railway:
+
+1. **Conectar tu repositorio** a Railway
+2. **Framework**: Seleccionar "Node.js"
+3. **Build Command**: `npm run build` (ya configurado)
+4. **Start Command**: `npm run preview` (ya configurado)
+5. **Variables de Entorno**: No necesarias para el frontend
+
+**Nota**: El contador de vistas en tiempo real solo funcionará si tienes el servidor corriendo en un hosting que soporte WebSockets (como Heroku, Railway, o un VPS).
