@@ -7,10 +7,11 @@ function Hero() {
     <section className="hero">
       <div className="hero-container">
         <div className="hero-content">
-          <div className="hero-badge">
+          
+          {/*<div className="hero-badge">
             <FaRocket className="badge-icon" />
             <span>Sistema 2024 - Versión Profesional</span>
-          </div>
+          </div>*/}
           
           <h1 className="hero-title">
             Sistema de Inventario 
