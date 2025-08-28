@@ -1,25 +1,31 @@
 import { Link } from 'react-router-dom';
-import { FaDownload, FaPlay, FaArrowRight, FaWindows } from 'react-icons/fa';
+import { FaDownload, FaPlay, FaArrowRight, FaWindows, FaShieldAlt, FaRocket, FaCheckCircle } from 'react-icons/fa';
+import './Hero.css';
 
 function Hero() {
   return (
     <section className="hero">
-      <div className="hero::before"></div>
-      <div className="hero-overlay">
+      <div className="hero-background">
+        <div className="hero-pattern"></div>
+        <div className="hero-gradient"></div>
+      </div>
+      
+      <div className="hero-container">
         <div className="hero-content">
           <div className="hero-badge">
-            <span className="badge-icon">🚀</span>
-            <span>Nuevo Sistema 2024</span>
+            <FaRocket className="badge-icon" />
+            <span>Sistema 2024 - Versión Profesional</span>
           </div>
           
           <h1 className="hero-title">
             Sistema de Inventario 
-            <span className="hero-title-highlight">Profesional</span>
+            <span className="hero-title-highlight">Empresarial</span>
           </h1>
           
           <p className="hero-subtitle">
-            Software de escritorio para Windows que transforma la gestión de tu inventario. 
-            Control total de stock, reportes avanzados y base de datos local segura.
+            Solución integral de gestión de inventario diseñada para empresas que buscan 
+            eficiencia, control total y reportes avanzados. Base de datos local segura 
+            con interfaz intuitiva.
           </p>
           
           <div className="hero-buttons">
@@ -36,22 +42,43 @@ function Hero() {
             
             <Link to="/ayuda" className="btn btn-secondary btn-hero">
               <FaPlay className="btn-icon" />
-              Ver Ayuda
+              Ver Demo
             </Link>
           </div>
           
           <div className="hero-features">
             <div className="hero-feature">
               <FaWindows className="feature-icon" />
-              <span>Compatible con Windows 10/11</span>
+              <span>Windows 10/11 Compatible</span>
             </div>
             <div className="hero-feature">
-              <span className="feature-icon">⚡</span>
-              <span>Instalación en 5 minutos</span>
+              <FaRocket className="feature-icon" />
+              <span>Instalación Rápida</span>
             </div>
             <div className="hero-feature">
-              <span className="feature-icon">🔒</span>
-              <span>Sistema completo</span>
+              <FaShieldAlt className="feature-icon" />
+              <span>100% Seguro</span>
+            </div>
+            <div className="hero-feature">
+              <FaCheckCircle className="feature-icon" />
+              <span>Sistema Completo</span>
+            </div>
+          </div>
+        </div>
+        
+        <div className="hero-visual">
+          <div className="hero-card">
+            <div className="card-header">
+              <div className="card-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+            </div>
+            <div className="card-content">
+              <div className="app-preview">
+                <img src="/assets/images/iniciopv.png" alt="Vista previa del sistema" className="app-image" />
+              </div>
             </div>
           </div>
         </div>
