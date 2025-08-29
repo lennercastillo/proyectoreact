@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
-import { FaTimes, FaDownload, FaPlay, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import { FaTimes, FaDownload, FaPlay, FaArrowLeft, FaStar, FaClock, FaBook } from 'react-icons/fa';
+import './Modal.css';
 
 function Modal({ isOpen, onClose, helpItem }) {
   useEffect(() => {
@@ -83,19 +84,70 @@ function Modal({ isOpen, onClose, helpItem }) {
 
   const currentInstructions = instructions[helpItem.title] || [];
 
+  const getDifficultyLevel = (title) => {
+    const easy = ["Inicio del Sistema", "Gestión de Productos"];
+    const medium = ["Nueva Factura con Efectivo", "Reportes del Sistema"];
+    const hard = ["Nueva Factura con Crédito", "Configuración de Usuarios"];
+    
+    if (easy.includes(title)) return { level: "Fácil", color: "#10b981" };
+    if (medium.includes(title)) return { level: "Intermedio", color: "#f59e0b" };
+    if (hard.includes(title)) return { level: "Avanzado", color: "#ef4444" };
+    return { level: "Intermedio", color: "#f59e0b" };
+  };
+
+  const getEstimatedTime = (title) => {
+    const times = {
+      "Inicio del Sistema": "5-10 min",
+      "Gestión de Productos": "2-5 min",
+      "Nueva Factura con Efectivo": "3-7 min",
+      "Nueva Factura con Crédito": "5-10 min",
+      "Reportes del Sistema": "3-8 min",
+      "Configuración de Usuarios": "5-15 min"
+    };
+    return times[title] || "5-10 min";
+  };
+
+  const difficulty = getDifficultyLevel(helpItem.title);
+  const estimatedTime = getEstimatedTime(helpItem.title);
+
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
-          <h3 className="modal-title">{helpItem.title}</h3>
-          <button className="modal-close" onClick={onClose}>
-            <FaTimes />
-          </button>
+          <div className="modal-header-content">
+            <div className="modal-title-section">
+              <h3 className="modal-title">{helpItem.title}</h3>
+              <div className="modal-meta">
+                <span className="modal-category">
+                  <FaBook className="meta-icon" />
+                  {helpItem.category}
+                </span>
+                <span className="modal-difficulty" style={{ color: difficulty.color }}>
+                  <FaStar className="meta-icon" />
+                  {difficulty.level}
+                </span>
+                <span className="modal-time">
+                  <FaClock className="meta-icon" />
+                  {estimatedTime}
+                </span>
+              </div>
+            </div>
+            <button className="modal-close" onClick={onClose} aria-label="Cerrar modal">
+              <FaTimes />
+            </button>
+          </div>
         </div>
         
         <div className="modal-body">
-          <div className="modal-image">
-            <img src={helpItem.gif} alt={helpItem.title} />
+          <div className="modal-image-section">
+            <div className="modal-image">
+              <img src={helpItem.gif} alt={helpItem.title} />
+            </div>
+            <div className="image-overlay">
+              <div className="play-button">
+                <FaPlay />
+              </div>
+            </div>
           </div>
           
           <div className="modal-description">
@@ -107,21 +159,21 @@ function Modal({ isOpen, onClose, helpItem }) {
             <ol className="instructions-list">
               {currentInstructions.map((instruction, index) => (
                 <li key={index} className="instruction-item">
-                  {instruction}
+                  <span className="instruction-number">{index + 1}</span>
+                  <span className="instruction-text">{instruction}</span>
                 </li>
               ))}
             </ol>
           </div>
           
           <div className="modal-tags">
-            <div className="modal-category">
-              <strong>Categoría:</strong> {helpItem.category}
-            </div>
-            <div className="modal-tags-list">
-              <strong>Tags:</strong>
-              {helpItem.tags.map(tag => (
-                <span key={tag} className="modal-tag">{tag}</span>
-              ))}
+            <div className="modal-tags-section">
+              <h5>Etiquetas relacionadas:</h5>
+              <div className="modal-tags-list">
+                {helpItem.tags.map(tag => (
+                  <span key={tag} className="modal-tag">{tag}</span>
+                ))}
+              </div>
             </div>
           </div>
         </div>

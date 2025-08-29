@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FaDownload, FaCheckCircle, FaArrowRight, FaStar, FaCrown, FaRocket } from 'react-icons/fa';
+import { FaDownload, FaCheckCircle, FaArrowRight, FaStar, FaCrown } from 'react-icons/fa';
 import './PricingCards.css';
 
 function PricingCards() {
