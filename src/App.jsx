@@ -21,10 +21,16 @@ function App() {
         <Routes>
           <Route path="/" element={
             <>
-              <Hero />
+              <div id="inicio">
+                <Hero />
+              </div>
               <Features />
-              <PricingCards />
-              <CTA />
+              <div id="precios">
+                <PricingCards />
+              </div>
+              <div id="descargar">
+                <CTA />
+              </div>
             </>
           } />
           <Route path="/ayuda" element={<HelpPage />} />

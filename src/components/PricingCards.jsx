@@ -1,4 +1,9 @@
+import { useState } from 'react';
+import { FaDownload, FaCheckCircle, FaArrowRight } from 'react-icons/fa';
+
 function PricingCards() {
+  const [selectedPlan, setSelectedPlan] = useState(null);
+
   const plans = [
     {
       name: "Plan Básico",
@@ -55,6 +60,23 @@ function PricingCards() {
     }
   };
 
+  const handlePlanSelection = (plan) => {
+    setSelectedPlan(plan);
+    
+    // Scroll to CTA section for download
+    const ctaSection = document.getElementById('descargar');
+    if (ctaSection) {
+      ctaSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    // Show success message
+    alert(`¡Plan ${plan.name} seleccionado! Redirigiendo a la descarga...`);
+  };
+
+  const handleDownload = () => {
+    window.open('https://mega.nz/file/EkwSBbYI#wcbT_mN9nB8l6AdRTqjcqXBDw7yQnH13wFclj2HaixY', '_blank');
+  };
+
   return (
     <section className="pricing-section">
       <div className="container">
@@ -98,12 +120,30 @@ function PricingCards() {
                 </ul>
               </div>
               
-              <button className={`pricing-button ${plan.popular ? 'featured' : ''}`}>
+              <button 
+                className={`pricing-button ${plan.popular ? 'featured' : ''}`}
+                onClick={() => handlePlanSelection(plan)}
+              >
                 {plan.popular ? 'Comenzar Ahora' : 'Seleccionar Plan'}
+                <FaArrowRight className="button-arrow" />
               </button>
             </div>
           ))}
         </div>
+        
+        {selectedPlan && (
+          <div className="plan-selection-feedback">
+            <div className="feedback-content">
+              <FaCheckCircle className="feedback-icon" />
+              <h3>Plan Seleccionado: {selectedPlan.name}</h3>
+              <p>Has seleccionado el plan {selectedPlan.name}. Haz clic en el botón de descarga para continuar.</p>
+              <button className="btn btn-primary btn-large" onClick={handleDownload}>
+                <FaDownload className="btn-icon" />
+                Descargar Sistema
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );

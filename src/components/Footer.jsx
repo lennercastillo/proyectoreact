@@ -1,4 +1,15 @@
 function Footer() {
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
+  const handleDownloadClick = () => {
+    window.open('https://mega.nz/file/EkwSBbYI#wcbT_mN9nB8l6AdRTqjcqXBDw7yQnH13wFclj2HaixY', '_blank');
+  };
+
   return (
     <footer className="footer">
       <div className="container">
@@ -11,10 +22,10 @@ function Footer() {
           <div className="footer-section">
             <h4>Enlaces Rápidos</h4>
             <ul className="footer-links">
-              <li><a href="#inicio">Inicio</a></li>
-              <li><a href="#precios">Precios</a></li>
-              <li><a href="/ayuda">Ayuda</a></li>
-              <li><a href="#descargar">Descargar</a></li>
+              <li><button onClick={() => scrollToSection('inicio')} className="footer-link-btn">Inicio</button></li>
+              <li><button onClick={() => scrollToSection('precios')} className="footer-link-btn">Precios</button></li>
+              <li><a href="/ayuda" className="footer-link">Ayuda</a></li>
+              <li><button onClick={handleDownloadClick} className="footer-link-btn">Descargar</button></li>
             </ul>
           </div>
           

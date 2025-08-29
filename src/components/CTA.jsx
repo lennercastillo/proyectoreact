@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import { FaWindows } from 'react-icons/fa';
 
 function CTA() {
@@ -20,9 +19,6 @@ function CTA() {
             >
               Descargar para Windows
             </a>
-            <Link to="/ayuda" className="btn btn-secondary btn-large">
-              Ver Demo
-            </Link>
           </div>
           <div className="cta-features">
             <div className="cta-feature">

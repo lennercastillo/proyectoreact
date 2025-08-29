@@ -2500,3 +2500,116 @@ html {
     max-width: 300px;
   }
 }
+
+/* Plan Selection Feedback Styles */
+.plan-selection-feedback {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(147, 51, 234, 0.1) 100%);
+  border-radius: 1rem;
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  text-align: center;
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.feedback-content {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.feedback-icon {
+  font-size: 3rem;
+  color: var(--success-500);
+  margin-bottom: 1rem;
+  animation: bounce 1s ease-in-out;
+}
+
+.feedback-content h3 {
+  color: var(--primary-600);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.feedback-content p {
+  color: var(--neutral-600);
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* Button Arrow Animation */
+.button-arrow {
+  margin-left: 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.pricing-button:hover .button-arrow {
+  transform: translateX(4px);
+}
+
+/* Pricing Button Improvements */
+.pricing-button {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.pricing-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.pricing-button:hover::before {
+  left: 100%;
+}
+
+.pricing-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Bounce Animation */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* Footer Link Button Styles */
+.footer-link-btn {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-block;
+  cursor: pointer;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  padding: 0;
+  font-family: inherit;
+  position: relative;
+  padding-left: 0;
+}
+
+.footer-link-btn:hover {
+  color: var(--primary-lighter);
+  transform: translateX(5px);
+  padding-left: 20px;
+}
+
+.download-info p {
+  color: var(--success-400);
+  font-weight: 500;
+}
+

@@ -1,5 +1,4 @@
-import { Link } from 'react-router-dom';
-import { FaDownload, FaPlay, FaArrowRight, FaWindows, FaShieldAlt, FaRocket, FaCheckCircle } from 'react-icons/fa';
+import { FaDownload, FaArrowRight, FaWindows, FaShieldAlt, FaRocket, FaCheckCircle } from 'react-icons/fa';
 import './Hero.css';
 
 function Hero() {
@@ -35,11 +34,6 @@ function Hero() {
               Descargar para Windows
               <FaArrowRight className="btn-arrow" />
             </a>
-            
-            <Link to="/ayuda" className="btn btn-secondary btn-hero">
-              <FaPlay className="btn-icon" />
-              Ver Demo
-            </Link>
           </div>
           
           <div className="hero-features">
