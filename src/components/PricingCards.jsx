@@ -1,8 +1,10 @@
 import { useState } from 'react';
-import { FaDownload, FaCheckCircle, FaArrowRight } from 'react-icons/fa';
+import { FaDownload, FaCheckCircle, FaArrowRight, FaStar, FaCrown, FaRocket } from 'react-icons/fa';
+import './PricingCards.css';
 
 function PricingCards() {
   const [selectedPlan, setSelectedPlan] = useState(null);
+  const [hoveredPlan, setHoveredPlan] = useState(null);
 
   const plans = [
     {
@@ -17,7 +19,9 @@ function PricingCards() {
         "Soporte por email"
       ],
       popular: false,
-      color: "blue"
+      color: "blue",
+      icon: "🚀",
+      savings: "Ahorra $348/año"
     },
     {
       name: "Plan Profesional",
@@ -32,7 +36,9 @@ function PricingCards() {
         "Múltiples usuarios"
       ],
       popular: true,
-      color: "purple"
+      color: "purple",
+      icon: "💎",
+      savings: "Ahorra $708/año"
     },
     {
       name: "Plan Empresarial",
@@ -47,7 +53,9 @@ function PricingCards() {
         "Múltiples sucursales"
       ],
       popular: false,
-      color: "green"
+      color: "green",
+      icon: "🏢",
+      savings: "Ahorra $1188/año"
     }
   ];
 
@@ -63,18 +71,44 @@ function PricingCards() {
   const handlePlanSelection = (plan) => {
     setSelectedPlan(plan);
     
+    // Add selection animation
+    const card = document.querySelector(`[data-plan="${plan.name}"]`);
+    if (card) {
+      card.classList.add('plan-selected');
+      setTimeout(() => card.classList.remove('plan-selected'), 1000);
+    }
+    
     // Scroll to CTA section for download
     const ctaSection = document.getElementById('descargar');
     if (ctaSection) {
       ctaSection.scrollIntoView({ behavior: 'smooth' });
     }
     
-    // Show success message
-    alert(`¡Plan ${plan.name} seleccionado! Redirigiendo a la descarga...`);
+    // Show success message with better UX
+    const message = `¡Plan ${plan.name} seleccionado! 🎉\n\nPrecio: ${plan.price}/${plan.period}\n${plan.savings}\n\nRedirigiendo a la descarga...`;
+    alert(message);
   };
 
   const handleDownload = () => {
-    window.open('https://mega.nz/file/EkwSBbYI#wcbT_mN9nB8l6AdRTqjcqXBDw7yQnH13wFclj2HaixY', '_blank');
+    // Add download animation
+    const downloadBtn = document.querySelector('.download-btn');
+    if (downloadBtn) {
+      downloadBtn.classList.add('downloading');
+      setTimeout(() => {
+        downloadBtn.classList.remove('downloading');
+        window.open('https://mega.nz/file/EkwSBbYI#wcbT_mN9nB8l6AdRTqjcqXBDw7yQnH13wFclj2HaixY', '_blank');
+      }, 1000);
+    } else {
+      window.open('https://mega.nz/file/EkwSBbYI#wcbT_mN9nB8l6AdRTqjcqXBDw7yQnH13wFclj2HaixY', '_blank');
+    }
+  };
+
+  const handleCardHover = (planName) => {
+    setHoveredPlan(planName);
+  };
+
+  const handleCardLeave = () => {
+    setHoveredPlan(null);
   };
 
   return (
@@ -83,22 +117,31 @@ function PricingCards() {
         <div className="section-header">
           <h2>Planes y Precios</h2>
           <p>Elige el plan que mejor se adapte a tus necesidades</p>
+          <div className="pricing-subtitle">
+            <FaStar className="star-icon" />
+            <span>Todos los planes incluyen actualizaciones gratuitas y soporte técnico</span>
+          </div>
         </div>
         
         <div className="pricing-grid">
           {plans.map((plan, index) => (
-            <div key={index} className={`pricing-card ${plan.popular ? 'featured' : ''} ${getColorClass(plan.color)}`}>
+            <div 
+              key={index} 
+              className={`pricing-card ${plan.popular ? 'featured' : ''} ${getColorClass(plan.color)} ${hoveredPlan === plan.name ? 'hovered' : ''}`}
+              data-plan={plan.name}
+              onMouseEnter={() => handleCardHover(plan.name)}
+              onMouseLeave={handleCardLeave}
+            >
               {plan.popular && (
                 <div className="popular-badge">
+                  <FaCrown className="crown-icon" />
                   <span>⭐ Más Popular</span>
                 </div>
               )}
               
               <div className="pricing-header">
                 <div className="plan-icon">
-                  {plan.color === 'blue' && '🚀'}
-                  {plan.color === 'purple' && '💎'}
-                  {plan.color === 'green' && '🏢'}
+                  {plan.icon}
                 </div>
                 <h3 className="pricing-name">{plan.name}</h3>
                 <p className="plan-description">{plan.description}</p>
@@ -107,14 +150,17 @@ function PricingCards() {
                   <span className="amount">{plan.price}</span>
                   <span className="period">/{plan.period}</span>
                 </div>
+                <div className="savings-info">
+                  <span className="savings-text">{plan.savings}</span>
+                </div>
               </div>
               
               <div className="pricing-features">
                 <ul>
                   {plan.features.map((feature, featureIndex) => (
-                    <li key={featureIndex}>
+                    <li key={featureIndex} className="feature-item">
                       <span className="check-icon">✓</span>
-                      {feature}
+                      <span className="feature-text">{feature}</span>
                     </li>
                   ))}
                 </ul>
@@ -123,6 +169,7 @@ function PricingCards() {
               <button 
                 className={`pricing-button ${plan.popular ? 'featured' : ''}`}
                 onClick={() => handlePlanSelection(plan)}
+                onMouseEnter={() => handleCardHover(plan.name)}
               >
                 {plan.popular ? 'Comenzar Ahora' : 'Seleccionar Plan'}
                 <FaArrowRight className="button-arrow" />
@@ -136,11 +183,17 @@ function PricingCards() {
             <div className="feedback-content">
               <FaCheckCircle className="feedback-icon" />
               <h3>Plan Seleccionado: {selectedPlan.name}</h3>
-              <p>Has seleccionado el plan {selectedPlan.name}. Haz clic en el botón de descarga para continuar.</p>
-              <button className="btn btn-primary btn-large" onClick={handleDownload}>
+              <p>Has seleccionado el plan <strong>{selectedPlan.name}</strong> por <strong>{selectedPlan.price}/{selectedPlan.period}</strong>.</p>
+              <p className="savings-highlight">{selectedPlan.savings}</p>
+              <button className="btn btn-primary btn-large download-btn" onClick={handleDownload}>
                 <FaDownload className="btn-icon" />
                 Descargar Sistema
               </button>
+              <div className="download-info">
+                <p>✅ Descarga directa desde Mega</p>
+                <p>✅ Instalación automática</p>
+                <p>✅ Compatible con Windows 10/11</p>
+              </div>
             </div>
           </div>
         )}
