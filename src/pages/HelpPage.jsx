@@ -68,17 +68,36 @@ function HelpPage() {
   const categories = [...new Set(helpItems.map(item => item.category))];
 
   const openModal = (helpItem) => {
+    console.log('Opening modal for:', helpItem);
     setSelectedHelpItem(helpItem);
     setIsModalOpen(true);
+    console.log('Modal state:', { selectedHelpItem: helpItem, isModalOpen: true });
   };
 
   const closeModal = () => {
+    console.log('Closing modal');
     setIsModalOpen(false);
     setSelectedHelpItem(null);
   };
 
   return (
     <div className="help-page">
+      {/* Debug info */}
+      <div style={{
+        position: 'fixed',
+        top: '10px',
+        right: '10px',
+        background: 'rgba(0, 0, 0, 0.8)',
+        color: 'white',
+        padding: '10px',
+        borderRadius: '5px',
+        fontSize: '12px',
+        zIndex: 10000
+      }}>
+        <div>Modal Open: {isModalOpen ? '✅' : '❌'}</div>
+        <div>Selected Item: {selectedHelpItem ? selectedHelpItem.title : 'None'}</div>
+      </div>
+      
       <div className="container">
         <div className="help-header">
           <h1>Centro de Ayuda</h1>
@@ -86,6 +105,22 @@ function HelpPage() {
           <Link to="/" className="back-link">
             ← Volver al Inicio
           </Link>
+          
+          {/* Botón de prueba */}
+          <button 
+            onClick={() => openModal(helpItems[0])}
+            style={{
+              background: '#10b981',
+              color: 'white',
+              border: 'none',
+              padding: '0.75rem 1.5rem',
+              borderRadius: '0.5rem',
+              marginTop: '1rem',
+              cursor: 'pointer'
+            }}
+          >
+            🧪 Probar Modal
+          </button>
         </div>
 
         <div className="search-section">
