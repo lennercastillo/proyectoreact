@@ -84,15 +84,7 @@ function HelpPage() {
     <div className="help-page">
       {/* Debug info */}
       <div style={{
-        position: 'fixed',
-        top: '10px',
-        right: '10px',
-        background: 'rgba(255, 255, 255, 0.8)',
-        color: 'white',
-        padding: '10px',
-        borderRadius: '5px',
-        fontSize: '12px',
-        zIndex: 10000
+        
       }}>
         {/*<div>Modal Open: {isModalOpen ? '✅' : '❌'}</div>
         <div>Selected Item: {selectedHelpItem ? selectedHelpItem.title : 'None'}</div>*/}
