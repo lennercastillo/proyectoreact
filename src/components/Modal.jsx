@@ -27,6 +27,8 @@ function Modal({ isOpen, onClose, helpItem }) {
     return null;
   }
 
+  console.log('Modal should be visible now:', { isOpen, helpItem });
+
   console.log('Modal rendering with:', helpItem);
 
   const instructions = {
@@ -118,12 +120,39 @@ function Modal({ isOpen, onClose, helpItem }) {
 
   return (
     <div 
-      className="modal-overlay"
+      className={`modal-overlay ${isOpen ? 'active' : ''}`}
       onClick={onClose}
+      style={{
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        background: 'rgba(0, 0, 0, 0.8)',
+        zIndex: 9999,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        opacity: isOpen ? 1 : 0,
+        visibility: isOpen ? 'visible' : 'hidden',
+        transition: 'all 0.3s ease'
+      }}
     >
       <div 
         className="modal-content"
         onClick={(e) => e.stopPropagation()}
+        style={{
+          background: 'white',
+          borderRadius: '1.5rem',
+          maxWidth: '800px',
+          width: '100%',
+          maxHeight: '90vh',
+          overflow: 'auto',
+          boxShadow: '0 25px 50px rgba(0, 0, 0, 0.3)',
+          position: 'relative',
+          transform: isOpen ? 'scale(1) translateY(0)' : 'scale(0.9) translateY(20px)',
+          transition: 'all 0.3s ease'
+        }}
       >
         {/* Header */}
         <div className="modal-header">
