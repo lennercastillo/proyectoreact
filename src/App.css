@@ -1806,7 +1806,55 @@ a:hover {
   color: white;
 }
 
-/* Responsive Help Page */
+/* Help Page - Large Screens Optimization */
+@media (min-width: 1200px) {
+  .help-page .container {
+    max-width: 1400px;
+  }
+  
+  .help-grid {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2.5rem;
+  }
+  
+  .help-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .help-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+  }
+  
+  .search-container {
+    max-width: 600px;
+  }
+  
+  .category-tags {
+    justify-content: center;
+    gap: 1.25rem;
+  }
+  
+  .category-tag {
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
+  }
+}
+
+/* Help Page - Medium Screens */
+@media (min-width: 769px) and (max-width: 1199px) {
+  .help-grid {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+  
+  .help-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+  }
+}
+
+/* Responsive Help Page - Mobile */
 @media (max-width: 768px) {
   .help-page {
     padding: 5rem 0 2rem 0;
@@ -2170,7 +2218,7 @@ a:hover {
   line-height: 1.6;
 }
 
-/* Modal Mobile Styles */
+/* Modal Mobile Styles - Override for mobile */
 @media (max-width: 768px) {
   .modal-overlay {
     padding: 1rem;
@@ -2190,9 +2238,11 @@ a:hover {
     transform: translateY(0);
   }
   
+  /* Override modal header styles for mobile */
   .modal-header {
     margin-bottom: 1.25rem;
     padding-bottom: 0.875rem;
+    padding: 1.5rem 1.5rem 1.25rem;
   }
   
   .modal-title {
@@ -2207,6 +2257,7 @@ a:hover {
   .modal-body {
     font-size: 0.95rem;
     line-height: 1.5;
+    padding: 1.5rem;
   }
 }
 
@@ -2223,6 +2274,7 @@ a:hover {
   .modal-header {
     margin-bottom: 1rem;
     padding-bottom: 0.75rem;
+    padding: 1.25rem 1.25rem 1rem;
   }
   
   .modal-title {
@@ -2236,15 +2288,88 @@ a:hover {
   
   .modal-body {
     font-size: 0.9rem;
+    padding: 1.25rem;
   }
 }
 
-/* Modal Component Styles */
+/* Modal Component Styles - Desktop First */
 .modal-header {
   padding: 2rem 2rem 1.5rem;
   border-bottom: 1px solid #e2e8f0;
   background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
   border-radius: 1.5rem 1.5rem 0 0;
+  position: relative;
+}
+
+/* Modal Desktop Enhancements */
+@media (min-width: 769px) {
+  .modal-content {
+    max-width: 800px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+  }
+  
+  .modal-header {
+    padding: 2.5rem 2.5rem 2rem;
+  }
+  
+  .modal-title {
+    font-size: 2rem;
+  }
+  
+  .modal-badges {
+    gap: 1.25rem;
+  }
+  
+  .modal-badge {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.25rem;
+  }
+  
+  .modal-body {
+    padding: 2.5rem;
+  }
+  
+  .modal-image-wrapper {
+    height: 350px;
+  }
+  
+  .modal-description {
+    padding: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .modal-description-text {
+    font-size: 1.25rem;
+  }
+  
+  .modal-instructions-title {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .modal-instruction-item {
+    padding: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  .modal-instruction-number {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
+  }
+  
+  .modal-instruction-text {
+    font-size: 1.1rem;
+  }
+  
+  .modal-footer {
+    padding: 2rem 2.5rem 2.5rem;
+  }
+  
+  .modal-btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+  }
 }
 
 .modal-header-content {
@@ -2305,6 +2430,8 @@ a:hover {
   justify-content: center;
   min-width: 44px;
   min-height: 44px;
+  position: relative;
+  z-index: 10;
 }
 
 .modal-close:hover {
@@ -2526,10 +2653,10 @@ a:hover {
   box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
 }
 
-/* Modal Mobile Styles */
+/* Modal Mobile Styles - Tablet and Mobile */
 @media (max-width: 768px) {
   .modal-header {
-    padding: 1.5rem 1.5rem 1.25rem;
+    padding: 1.5rem 1.5rem 1.25rem !important;
   }
   
   .modal-header-content {
@@ -2538,7 +2665,7 @@ a:hover {
   }
   
   .modal-title {
-    font-size: 1.5rem;
+    font-size: 1.5rem !important;
     margin-bottom: 0.875rem;
   }
   
@@ -2552,7 +2679,7 @@ a:hover {
   }
   
   .modal-close {
-    position: absolute;
+    position: absolute !important;
     top: 1rem;
     right: 1rem;
     font-size: 1.25rem;
@@ -2560,7 +2687,7 @@ a:hover {
   }
   
   .modal-body {
-    padding: 1.5rem;
+    padding: 1.5rem !important;
   }
   
   .modal-image-wrapper {
@@ -2626,11 +2753,11 @@ a:hover {
 
 @media (max-width: 480px) {
   .modal-header {
-    padding: 1.25rem 1.25rem 1rem;
+    padding: 1.25rem 1.25rem 1rem !important;
   }
   
   .modal-title {
-    font-size: 1.25rem;
+    font-size: 1.25rem !important;
     margin-bottom: 0.75rem;
   }
   
@@ -2651,7 +2778,7 @@ a:hover {
   }
   
   .modal-body {
-    padding: 1.25rem;
+    padding: 1.25rem !important;
   }
   
   .modal-image-wrapper {
@@ -2708,6 +2835,92 @@ a:hover {
   .modal-btn {
     padding: 0.75rem 1rem;
     font-size: 0.9rem;
+  }
+}
+
+/* Touch and Interaction Improvements */
+@media (hover: none) and (pointer: coarse) {
+  /* Touch device optimizations */
+  .help-card:hover {
+    transform: none;
+    box-shadow: var(--shadow-sm);
+  }
+  
+  .help-card:active {
+    transform: scale(0.98);
+    box-shadow: var(--shadow-md);
+  }
+  
+  .category-tag:hover {
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
+    border-color: var(--border-color);
+  }
+  
+  .category-tag:active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    transform: scale(0.95);
+  }
+  
+  .modal-instruction-item:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: #e2e8f0;
+  }
+  
+  .modal-instruction-item:active {
+    transform: scale(0.98);
+    border-color: #3b82f6;
+  }
+  
+  .modal-tag:hover {
+    background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .modal-tag:active {
+    background: linear-gradient(135deg, #e2e8f0, #cbd5e1);
+    transform: scale(0.95);
+  }
+}
+
+/* High DPI Display Optimizations */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .help-card-image img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+  
+  .modal-image {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+/* Reduced Motion Support */
+@media (prefers-reduced-motion: reduce) {
+  .help-card,
+  .category-tag,
+  .modal-instruction-item,
+  .modal-tag,
+  .modal-btn,
+  .modal-close,
+  .search-button,
+  .back-link {
+    transition: none;
+  }
+  
+  .help-card:hover,
+  .modal-instruction-item:hover,
+  .modal-tag:hover {
+    transform: none;
+  }
+  
+  .modal-overlay.active .modal-content {
+    transform: none;
   }
 }
 
