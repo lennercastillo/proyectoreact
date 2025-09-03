@@ -20,6 +20,20 @@ function Header() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  // Prevent body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    
+    // Cleanup on unmount
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMenuOpen]);
   
   return (
     <header className={`header ${isScrolled ? 'header-scrolled' : ''}`}>
@@ -30,7 +44,7 @@ function Header() {
           </Link>
         </div>
         
-        <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`}>
+        <nav className={`nav ${isMenuOpen ? 'nav-open' : ''}`} onClick={(e) => e.stopPropagation()}>
           <Link 
             to="/" 
             className={`nav-link ${location.pathname === '/' ? 'active' : ''}`}
@@ -57,6 +71,14 @@ function Header() {
             Descargar
           </a>
         </nav>
+        
+        {/* Backdrop overlay for mobile menu */}
+        {isMenuOpen && (
+          <div 
+            className="mobile-menu-backdrop" 
+            onClick={() => setIsMenuOpen(false)}
+          />
+        )}
         
         <button className="mobile-menu-btn" onClick={toggleMenu} aria-label="Toggle menu">
           {isMenuOpen ? <FaTimes /> : <FaBars />}

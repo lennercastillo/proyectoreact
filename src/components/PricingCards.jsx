@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { FaDownload, FaCheckCircle, FaArrowRight, FaStar, FaCrown } from 'react-icons/fa';
 import './PricingCards.css';
+import PlanSelectionModal from './PlanSelectionModal';
 
 function PricingCards() {
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [hoveredPlan, setHoveredPlan] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const plans = [
     {
@@ -70,6 +72,7 @@ function PricingCards() {
 
   const handlePlanSelection = (plan) => {
     setSelectedPlan(plan);
+    setIsModalOpen(true);
     
     // Add selection animation
     const card = document.querySelector(`[data-plan="${plan.name}"]`);
@@ -77,16 +80,6 @@ function PricingCards() {
       card.classList.add('plan-selected');
       setTimeout(() => card.classList.remove('plan-selected'), 1000);
     }
-    
-    // Scroll to CTA section for download
-    const ctaSection = document.getElementById('descargar');
-    if (ctaSection) {
-      ctaSection.scrollIntoView({ behavior: 'smooth' });
-    }
-    
-    // Show success message with better UX
-    const message = `¡Plan ${plan.name} seleccionado! 🎉\n\nPrecio: ${plan.price}/${plan.period}\n${plan.savings}\n\nRedirigiendo a la descarga...`;
-    alert(message);
   };
 
   const handleDownload = () => {
@@ -109,6 +102,23 @@ function PricingCards() {
 
   const handleCardLeave = () => {
     setHoveredPlan(null);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setSelectedPlan(null);
+  };
+
+  const handleConfirmPlan = (plan) => {
+    // Scroll to CTA section for download
+    const ctaSection = document.getElementById('descargar');
+    if (ctaSection) {
+      ctaSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    // Show success message
+    const message = `¡Plan ${plan.name} confirmado! 🎉\n\nPrecio: ${plan.price}/${plan.period}\n${plan.savings}\n\nRedirigiendo a la descarga...`;
+    alert(message);
   };
 
   return (
@@ -198,6 +208,14 @@ function PricingCards() {
           </div>
         )}
       </div>
+
+      {/* Plan Selection Modal */}
+      <PlanSelectionModal 
+        isOpen={isModalOpen}
+        onClose={closeModal}
+        selectedPlan={selectedPlan}
+        onConfirm={handleConfirmPlan}
+      />
     </section>
   );
 }
