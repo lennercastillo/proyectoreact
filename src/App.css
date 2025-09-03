@@ -1598,6 +1598,47 @@ a:hover {
   background: var(--primary-dark);
 }
 
+/* Search Suggestions */
+.search-suggestions {
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+.suggestions-title {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 1rem;
+  font-weight: 500;
+}
+
+.suggestion-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.suggestion-tag {
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  color: var(--primary-color);
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.suggestion-tag:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
 /* Categories Section */
 .categories-section {
   margin-bottom: 3rem;
@@ -1906,6 +1947,30 @@ a:hover {
     font-size: 1rem;
   }
   
+  /* Search Suggestions Mobile */
+  .search-suggestions {
+    margin-top: 1.25rem;
+  }
+  
+  .suggestions-title {
+    font-size: 0.85rem;
+    margin-bottom: 0.875rem;
+  }
+  
+  .suggestion-tags {
+    gap: 0.5rem;
+    justify-content: flex-start;
+    overflow-x: auto;
+    padding: 0.5rem 0;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .suggestion-tag {
+    padding: 0.4rem 0.875rem;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+  
   /* Categories Mobile */
   .categories-section {
     margin-bottom: 2rem;
@@ -2052,6 +2117,26 @@ a:hover {
   .search-button {
     padding: 0.75rem 1rem;
     font-size: 0.95rem;
+  }
+  
+  /* Search Suggestions Small Mobile */
+  .search-suggestions {
+    margin-top: 1rem;
+  }
+  
+  .suggestions-title {
+    font-size: 0.8rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .suggestion-tags {
+    gap: 0.375rem;
+    padding: 0.25rem 0;
+  }
+  
+  .suggestion-tag {
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
   }
   
   /* Categories Small Mobile */
