@@ -55,7 +55,16 @@ function HelpPage() {
       gif: "/assets/images/header-bg.jpg",
       category: "Administración",
       tags: ["usuarios", "permisos", "admin", "como crear usuario", "agregar usuario", "configurar permisos", "administrar", "accesos"]
+    },
+    {
+      id: 7,
+      title: "Realizar ajustes de inventario",
+      description: "Realizar ajustes de inventario para corregir errores o cambios en el stock",
+      gif: "/assets/images/header-bg.jpg",
+      category: "Administración",
+      tags: ["ajustes", "ajuste inventario", "ajuste por disminucion", "corregir stock", "ajustar stock", "ajustar inventario", "ajustar mercancia", "ajustar mercaderia"]
     }
+
   ];
 
   const filteredItems = helpItems.filter(item => {
