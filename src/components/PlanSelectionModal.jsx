@@ -43,34 +43,33 @@ function PlanSelectionModal({ isOpen, onClose, selectedPlan, onConfirm }) {
         bottom: 0,
         background: 'rgba(0, 0, 0, 0.8)',
         backdropFilter: 'blur(8px)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
+        display: 'block',
         zIndex: 9999,
-        padding: '1rem'
+        padding: '0'
       }}
       onClick={onClose}
     >
       <div 
         style={{
           background: 'white',
-          borderRadius: '1.5rem',
-          maxWidth: '600px',
-          width: '100%',
-          maxHeight: '90vh',
+          borderRadius: '0',
+          width: '100vw',
+          height: '100vh',
           overflow: 'auto',
-          boxShadow: '0 25px 50px rgba(0, 0, 0, 0.3)',
+          boxShadow: 'none',
           position: 'relative'
         }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
         <div style={{
-          padding: '2rem 2rem 1.5rem',
+          padding: '2rem',
           borderBottom: '1px solid #e2e8f0',
           background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
-          borderRadius: '1.5rem 1.5rem 0 0',
-          position: 'relative'
+          borderRadius: '0',
+          position: 'sticky',
+          top: 0,
+          zIndex: 10
         }}>
           <button 
             onClick={onClose}
@@ -162,25 +161,30 @@ function PlanSelectionModal({ isOpen, onClose, selectedPlan, onConfirm }) {
         </div>
         
         {/* Body */}
-        <div style={{ padding: '2rem' }}>
+        <div style={{ 
+          padding: '2rem',
+          maxWidth: '800px',
+          margin: '0 auto',
+          width: '100%'
+        }}>
           {/* Price */}
           <div style={{
             textAlign: 'center',
             marginBottom: '2rem',
-            padding: '1.5rem',
+            padding: '2rem',
             background: '#f8fafc',
             borderRadius: '1rem',
             border: '2px solid #e2e8f0'
           }}>
             <div style={{
-              fontSize: '3rem',
+              fontSize: '4rem',
               fontWeight: '800',
               color: '#1e293b',
               marginBottom: '0.5rem'
             }}>
               {selectedPlan.price}
               <span style={{
-                fontSize: '1.5rem',
+                fontSize: '2rem',
                 fontWeight: '600',
                 color: '#64748b'
               }}>
@@ -188,7 +192,7 @@ function PlanSelectionModal({ isOpen, onClose, selectedPlan, onConfirm }) {
               </span>
             </div>
             <div style={{
-              fontSize: '1.125rem',
+              fontSize: '1.5rem',
               color: '#10b981',
               fontWeight: '600'
             }}>
@@ -199,10 +203,10 @@ function PlanSelectionModal({ isOpen, onClose, selectedPlan, onConfirm }) {
           {/* Features */}
           <div style={{ marginBottom: '2rem' }}>
             <h4 style={{
-              fontSize: '1.25rem',
+              fontSize: '1.75rem',
               fontWeight: '700',
               color: '#1e293b',
-              margin: '0 0 1.5rem 0',
+              margin: '0 0 2rem 0',
               textAlign: 'center'
             }}>
               Características incluidas:
@@ -210,27 +214,30 @@ function PlanSelectionModal({ isOpen, onClose, selectedPlan, onConfirm }) {
             <ul style={{
               listStyle: 'none',
               padding: 0,
-              margin: 0
+              margin: 0,
+              display: 'grid',
+              gap: '1rem'
             }}>
               {selectedPlan.features.map((feature, index) => (
                 <li key={index} style={{
                   display: 'flex',
                   alignItems: 'center',
                   gap: '1rem',
-                  padding: '0.75rem',
-                  marginBottom: '0.5rem',
+                  padding: '1.5rem',
                   background: 'white',
-                  borderRadius: '0.5rem',
-                  border: '1px solid #e2e8f0'
+                  borderRadius: '1rem',
+                  border: '1px solid #e2e8f0',
+                  boxShadow: '0 2px 4px rgba(0, 0, 0, 0.05)'
                 }}>
                   <FaCheckCircle style={{
                     color: '#10b981',
-                    fontSize: '1.125rem',
+                    fontSize: '1.5rem',
                     flexShrink: 0
                   }} />
                   <span style={{
                     color: '#475569',
-                    fontWeight: '500'
+                    fontWeight: '500',
+                    fontSize: '1.125rem'
                   }}>
                     {feature}
                   </span>
@@ -242,14 +249,17 @@ function PlanSelectionModal({ isOpen, onClose, selectedPlan, onConfirm }) {
         
         {/* Footer */}
         <div style={{
-          padding: '1.5rem 2rem 2rem',
+          padding: '2rem',
           borderTop: '1px solid #e2e8f0',
           background: '#f8fafc',
-          borderRadius: '0 0 1.5rem 1.5rem',
+          borderRadius: '0',
           display: 'flex',
           gap: '1rem',
           justifyContent: 'center',
-          flexWrap: 'wrap'
+          flexWrap: 'wrap',
+          position: 'sticky',
+          bottom: 0,
+          zIndex: 10
         }}>
           <button 
             onClick={onClose}

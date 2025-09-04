@@ -10,6 +10,22 @@ function PricingCards() {
 
   const plans = [
     {
+      name: "Version prueba",
+      price: "Gratis",
+      period: "mes",
+      description: "Version prueba para evaluar el sistema",
+      features: [
+        "Gestión básica de inventario",
+        "Hasta 100 productos",
+        "Reportes básicos",
+        "Soporte por email"
+      ],
+      popular: false,
+      color: "blue",
+      icon: "🚀",
+      savings: "Ahorra $348/año"
+    },
+    {
       name: "Plan Básico",
       price: "$29",
       period: "mes",
